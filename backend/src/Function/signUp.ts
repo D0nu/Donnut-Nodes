@@ -31,6 +31,7 @@ export default async function signUp( req: Request , res: Response ) {
     const user = await User.create({
       name,
       email,
+      id: email,
       password: hashedPassword,
     })
 
