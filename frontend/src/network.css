@@ -1,0 +1,131 @@
+/* ===== NETWORK OVERVIEW ===== */
+.network-overview-section {
+  padding: 40px 20px;
+  margin: 0 20px;
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.network-stats-grid {
+  gap: 20px;
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  max-width: 1400px;
+}
+
+.network-stat-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--white);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 30px var(--mild-dark),
+    0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+.network-stat-card:first-child{
+  min-width: 100%;
+  max-width: 500px;
+}
+
+.network-stat-card.large {
+  grid-column: span 2;
+}
+
+.network-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 40px var(--mild-dark),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.network-stat-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.network-stat-header svg {
+  width: 30px;
+  height: 30px;
+  color: var(--highlight);
+}
+
+.network-stat-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--translucent);
+}
+
+.network-stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--highlight);
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.network-stat-progress {
+  height: 8px;
+  background: var(--background);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--highlight), var(--brilliant));
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+
+.network-stat-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--translucent);
+  opacity: 0.7;
+}
+
+.network-stat-trend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--translucent);
+  opacity: 0.7;
+}
+
+.trend-up {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Dark mode adjustments */
+body.dark .network-stat-card {
+  background: var(--background);
+}
+
+body.dark .network-stat-card:hover {
+  background: var(--white);
+}
+@media screen and (max-width: 500px) {
+  .hero-section, .cta-section{
+    margin: 10px;
+    padding: 30px 10px;
+    padding-top: 50px;
+  }
+  .hero-title{
+    font-size: 35px;
+  }
+  .network-overview-section, .stats-overview, section.featured-pnodes-section{
+    margin: 5px;
+    padding: 5px;
+  }
+  div.featured-pnodes-grid{
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+}

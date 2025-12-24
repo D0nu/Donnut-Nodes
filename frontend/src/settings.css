@@ -1,0 +1,97 @@
+.settings{
+  flex: 1;
+  gap: 40px;
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  max-width: 800px;
+  transition: 0.5s;
+  font-weight: 600;
+  flex-direction: column;
+}
+.settings span span{
+  color: var(--a);
+}
+.settings p, .settings h2, .settings h3{
+  gap: 15px;
+  padding: 0;
+  display: flex;
+  transition: 0.5s;
+  align-items: center;
+}
+.settings h2 svg{
+  width: 27px;
+  height: 27px;
+}
+.settings h3 svg{
+  width: 25px;
+  height: 25px;
+}
+.settings p svg{
+  width: 23px;
+  height: 23px;
+}
+.settings input{
+  border-bottom-left-radius: 5px;
+}
+.settings .password{
+  width: 90%;
+  align-self: center;
+}
+.settings .password input{
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 5px;
+}
+.settings button{
+  gap: 10px;
+  display: flex;
+  transition: 0.5s;
+  padding: 5px 15px;
+  align-self: start;
+  align-items: center;
+  border-radius: 20px;
+  color: var(--compliment);
+  background-color: var(--a);
+  border-top-left-radius: 5px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.25);
+}
+.settings .set{
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.settings section{
+  gap: 17.5px;
+  display: flex;
+  padding: 20px;
+  transition: 0.5s;
+  border-radius: 25px;
+  flex-direction: column;
+  border: solid 2px var(--sweet);
+}
+.clear{
+  gap: 15px;
+  display: flex;
+  padding: 0 10px;
+  color: var(--error);
+  flex-direction: column;
+}
+.clear button{
+  color: var(--white);
+  align-self: stretch;
+  background-color: var(--error);
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.25);
+}
+@media screen and ( max-width: 500px) {
+  .settings {
+    width: 100%;
+  }
+  .settings section{
+    padding: 15px;
+  }
+}
+@media screen and ( max-width: 350px) {
+  .settings {
+    padding: 10px;
+  }
+}
