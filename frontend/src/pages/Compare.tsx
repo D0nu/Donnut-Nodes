@@ -1,10 +1,10 @@
 import { format, isSameDay } from "date-fns"
 import { PNodes , Histories } from './../types'
 import { useNodes } from "./../context/NodesContext"
-import { ChartComponent, DoubleChartComponent, InputsPack } from "../components/pageParts"
 import { useComparison } from "./../context/CompareContext"
 import { useState , useEffect, SetStateAction } from "react"
 import { loaderCircleSvg, Refreshsvg, Searchsvg } from "../components/svgPack"
+import { ChartComponent, DoubleChartComponent, InputsPack } from "../components/pageParts"
 import { used , online , Trim , Ellipses , classAdd , formatSmartDate } from "../components/functions"
 
 type NodeResponse = {

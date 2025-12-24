@@ -1,6 +1,7 @@
 // server.js - Express Backend for Xandeum pNode Analytics
 import "dotenv/config"
 import cors from "cors";
+import path from "path";
 import axios from "axios";
 import mongoose from "mongoose";
 import { PNodes } from "./types";
@@ -21,6 +22,8 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(cookieParser())
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Known pNodes list
 const pNodesArray = process.env.KNOWN_PNODES?.split(",")
@@ -205,6 +208,22 @@ app.get("/pnodes", async ( req: Request , res: Response ) => {
     return res.status(500).json({ message: "Server Error", success: false });
   }
 });
+app.get("/", (_req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>PNodes API</title>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body>
+        <h1>PNodes Backend</h1>
+        <p>API is running.</p>
+      </body>
+    </html>
+  `);
+});
+
 
 app.post("/auth/signin", signIn);
 app.post("/auth/signup", signUp);

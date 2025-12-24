@@ -1,5 +1,4 @@
-import { ApiSvg, CodeSvg, TerminalSvg, DownloadSvg } from '../components/svgPack';
-import { UptimeSvg } from './../components/svgPack';
+import { TerminalSvg , UptimeSvg } from '../components/svgPack';
 
 const Api = () => {
   return (

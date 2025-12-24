@@ -4,8 +4,8 @@ import { format, isSameDay } from 'date-fns'
 import { useParams } from "react-router-dom"
 import { PNodes , Histories } from "./../types"
 import { useNodes } from '../context/NodesContext'
-import { ChartComponent, WatchListHandler } from '../components/pageParts'
 import { loaderCircleSvg, TrackerSvg } from "../components/svgPack"
+import { ChartComponent, WatchListHandler } from '../components/pageParts'
 import { Ellipses, formatSmartDate, online, used } from "../components/functions"
 
 type NodeResponse = {

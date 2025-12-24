@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { GoogleG } from './../components/svgPack';
 import { InputsPack } from '../components/pageParts'
-import { loaderCircleSvg, LogInSvg, Mailsvg, Padlocksvg, UnlockSvg, Xsvg } from '../components/svgPack'
 import { Link , useSearchParams, useNavigate } from 'react-router-dom'
+import { loaderCircleSvg, LogInSvg, Mailsvg, Padlocksvg, UnlockSvg, Xsvg } from '../components/svgPack'
 
 const SignIn = () => {
   const goTo = useNavigate();

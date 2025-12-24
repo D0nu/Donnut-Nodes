@@ -17,9 +17,9 @@ const Nodes = () => {
   const [ rev , setRev ] = useState(false)
   const [ status , setStatus ] = useState('')
   const [ filter , setFilter ] = useState('')
+  const { watchlistNodes , updated , loading } = useNodes()
   const [ display , setDisplay ] = useState< PNodes[]>([])
   const [ current , setCurrent ] = useState<FilterKeys>('name')
-  const { watchlistNodes , updated , error , loading } = useNodes()
   const searched = age || use || status || eff || time || pub || status || filter
 
   const Filters = ( filter : string ) => {
