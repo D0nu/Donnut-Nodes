@@ -209,8 +209,6 @@ export async function twitterCallback( req: Request, res: Response) {
 
     const twitterUser = userRes.data.data;
     const exists = await User.findOne({ id: twitterUser.id , provider: 'twitter' })
-    console.log(twitterUser.username)
-
     const hashedPassword = await bcrypt.hash( twitterUser.username.trim() , 10 )
     
     const user = exists ?? await User.create({
