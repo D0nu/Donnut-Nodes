@@ -24,9 +24,11 @@ const Api = () => {
               <div className="docs-info-box-icon">{TerminalSvg()}</div>
               <div className="docs-info-box-content">
                 <h3>Base URL</h3>
-                <code className="docs-code-block">
-                  {process.env.REACT_APP_API || 'http://localhost:4000'}
-                </code>
+                <a href={process.env.REACT_APP_API || 'http://localhost:4000'} target="_blank" rel="noopener noreferrer">
+                  <code className="docs-code-block">
+                    {process.env.REACT_APP_API || 'http://localhost:4000'}
+                  </code>
+                </a>
                 <p className="docs-info-box-note">
                   No authentication required. Free to use.
                 </p>
