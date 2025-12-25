@@ -7,11 +7,11 @@ import mongoose from "mongoose";
 import { PNodes } from "./types";
 import { Server } from "socket.io";
 import cookieParser from "cookie-parser"
-import { verifyJWT } from "./Function/Utils"
 import { PNodes as Nodes } from "./Model/PNodes";
 import NodesInstance from "./Model/NodesInstance";
 import getPNodesStatsById from "./Function/PNodes";
 import express, { Response , Request } from "express";
+import { HomePage, verifyJWT } from "./Function/Utils"
 import signUp, { Settings , Delete } from "./Function/signUp";
 import { AddToWatchlist, RemoveFromWatchlist } from "./Function/watchList";
 import { googleLogin, signIn, twitterCallback, twitterRedirect } from "./Function/signIn";
@@ -91,7 +91,6 @@ async function fetchAllPNodes() {
     data: uniquePNodes,
   };
 
-  console.log(`Fetched ${uniquePNodes.length} pNodes`);
   return uniquePNodes;
 }
 
@@ -145,8 +144,9 @@ async function pollPNodes() {
             last_seen_timestamp: pod.last_seen_timestamp
           },
           $setOnInsert: {
+            first_seen: now,
             pubkey: pod.pubkey,
-            first_seen: now - pod.uptime * 1000,
+            age:  now - pod.uptime * 1000,
             name: `Pnode-${generateUniqueNodeId()}`,
           },
         },
@@ -208,22 +208,12 @@ app.get("/pnodes", async ( req: Request , res: Response ) => {
     return res.status(500).json({ message: "Server Error", success: false });
   }
 });
-app.get("/", (_req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>PNodes API</title>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body>
-        <h1>PNodes Backend</h1>
-        <p>API is running.</p>
-      </body>
-    </html>
-  `);
-});
 
+app.get('/', (req, res) => {
+    const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
+    
+    res.send(HomePage(clientUrl));
+});
 
 app.post("/auth/signin", signIn);
 app.post("/auth/signup", signUp);
@@ -236,6 +226,7 @@ app.delete("/watchlist", RemoveFromWatchlist);
 
 const server = app.listen(PORT, async () => {
   await mongoose.connect( process.env.MONGO_URI || '' )
+  await pollPNodes()
   console.log(`API running on port ${PORT}`)
 });
 

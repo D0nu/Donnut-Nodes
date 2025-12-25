@@ -13,7 +13,9 @@ import Compare from './pages/Compare'
 import Policies from './pages/Polocies'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
+import Resources from './pages/Resources'
 import Watchlist from './pages/Watchlist'
+import GraphDocs from './pages/GraphDocs'
 import Terminologies from './pages/Terminologies'
 import { NodeProvider } from './context/NodesContext'
 import { Header , Footer } from './components/pageParts'
@@ -37,9 +39,11 @@ function App() {
         <Route path="/docs/terms" element={<Terms />} />
         <Route element={ <Compare /> } path={'/compare'} />
         <Route element={ <NodeId /> } path={'/nodes/:id'} />
+        <Route path='/docs/NodeDocs' element={ <Node /> } />
         <Route path="/docs/methods" element={<Methods />} />
+        <Route path="/docs/graphs" element={<GraphDocs />} />
         <Route path="/docs/policies" element={<Policies />} />
-        <Route element={ <Node /> } path={'/docs/NodeDocs'} />
+        <Route path="/docs/resources" element={<Resources />} />
         <Route path="/docs/terminologies" element={<Terminologies />} />
         <Route element={ user ? <Navigate to='/nodes'/> : <SignIn /> } path={'/signin'} />
         <Route element={ user ? <Navigate to='/nodes'/> : <SignUp /> } path={'/signup'} />

@@ -11,7 +11,7 @@ const Policies = () => {
               {ShieldSvg()}
               <h2>Policies & Terms</h2>
             </Link>
-            <p>Legal policies, terms of service, and privacy information</p>
+            <p>Platform policies, privacy, and data handling</p>
           </div>
           
           <nav className="docs-nav">
@@ -50,51 +50,39 @@ const Policies = () => {
 
         <main className="docs-content">
           <div className="docs-content-header">
-            <h1>Policies, Terms & Legal Information</h1>
+            <h1>Platform Policies & Data Handling</h1>
             <p className="docs-subtitle">
-              Legal documents, policies, and terms governing the use of Donnut-Nodes platform
+              Policies governing data usage, privacy, and platform operations for Donnut-Nodes
             </p>
           </div>
 
           <section id="terms-service" className="docs-section">
             <div className="docs-section-header">
               <div className="docs-section-icon">{TermsSvg()}</div>
-              <h2>Terms of Service</h2>
+              <h2>Terms of Use</h2>
             </div>
             
             <div className="docs-policy-section">
-              <h3>Acceptance of Terms</h3>
+              <h3>Platform Purpose</h3>
               <p>
-                By accessing and using Donnut-Nodes ("the Platform"), you accept and agree to be bound
-                by the terms and provision of this agreement. If you do not agree to abide by these terms,
-                please do not use this service.
+                Donnut-Nodes provides analytics and monitoring tools for pNode networks. We do not
+                create, modify, or form pNode data; we interpret and present data that is provided
+                by the network or users.
               </p>
               
-              <h3>Service Description</h3>
-              <p>
-                Donnut-Nodes provides analytics and monitoring services for Xandeum pNodes. We offer:
-              </p>
+              <h3>Service Scope</h3>
               <ul className="docs-policy-list">
-                <li>Real-time pNode performance monitoring</li>
-                <li>Network health analytics</li>
-                <li>Historical data tracking</li>
-                <li>API access to pNode data</li>
-                <li>Advanced filtering and search tools</li>
+                <li>Analysis and monitoring of pNodes based on provided data</li>
+                <li>Watchlist monitoring of selected nodes</li>
+                <li>Comparisons limited to two nodes side-by-side</li>
+                <li>Visualization and statistics based on existing data</li>
               </ul>
               
-              <h3>User Responsibilities</h3>
-              <ul className="docs-policy-list">
-                <li>Use the service only for lawful purposes</li>
-                <li>Do not attempt to disrupt or compromise the service</li>
-                <li>Respect rate limits and fair use policies</li>
-                <li>Do not use the service to infringe on others' rights</li>
-                <li>Maintain the confidentiality of your account credentials</li>
-              </ul>
-              
-              <h3>Limitations of Service</h3>
+              <h3>Disclaimer</h3>
               <p>
-                We strive to provide reliable service but cannot guarantee 100% uptime or accuracy
-                of data, as we depend on third-party sources (Xandeum network) for pNode information.
+                We do not hold any public license in the US or other jurisdictions. Users assume
+                all risk associated with actions based on node information. Donnut-Nodes is not
+                responsible for any losses resulting from node data interpretation or monitoring.
               </p>
             </div>
           </section>
@@ -108,49 +96,27 @@ const Policies = () => {
             <div className="docs-policy-section">
               <h3>Information We Collect</h3>
               <p>
-                We are committed to protecting your privacy. Here's what we collect:
+                We only collect minimal account information to allow platform access and OAuth
+                login:
               </p>
               
-              <div className="docs-category-grid">
-                <div className="docs-category">
-                  <h4>Account Information</h4>
-                  <p>Email, username, and password (encrypted)</p>
-                </div>
-                
-                <div className="docs-category">
-                  <h4>Usage Data</h4>
-                  <p>Pages visited, features used, and interaction patterns</p>
-                </div>
-                
-                <div className="docs-category">
-                  <h4>Technical Data</h4>
-                  <p>IP address, browser type, device information</p>
-                </div>
-                
-                <div className="docs-category">
-                  <h4>Public pNode Data</h4>
-                  <p>Network information from Xandeum's public endpoints</p>
-                </div>
-              </div>
-              
-              <h3>How We Use Your Information</h3>
               <ul className="docs-policy-list">
-                <li>Provide and maintain our service</li>
-                <li>Improve and optimize the platform</li>
-                <li>Communicate important updates and information</li>
-                <li>Ensure platform security and prevent abuse</li>
-                <li>Comply with legal obligations</li>
+                <li>Name and email from Google OAuth</li>
+                <li>Username from X OAuth</li>
+                <li>Auto-generated password for initial sign-up based on username or email</li>
               </ul>
               
-              <h3>Data Sharing</h3>
+              <h3>Data Handling</h3>
               <p>
-                We do not sell your personal information. We may share data with:
+                User passwords are never visible or stored in plaintext. No additional personal
+                data is collected beyond what is needed for authentication.
               </p>
-              <ul className="docs-policy-list">
-                <li>Service providers who assist in platform operation</li>
-                <li>Legal authorities when required by law</li>
-                <li>Third parties during business transfers (mergers, acquisitions)</li>
-              </ul>
+              
+              <h3>Sharing</h3>
+              <p>
+                We do not sell or provide user data to any third parties. Only our dev team may
+                access minimal OAuth details for platform functionality.
+              </p>
             </div>
           </section>
 
@@ -161,50 +127,28 @@ const Policies = () => {
             </div>
             
             <div className="docs-policy-section">
-              <h3>Data Collection Methods</h3>
+              <h3>Processing of Node Data</h3>
               <p>
-                We collect pNode data through automated polling of Xandeum's public pRPC endpoints
-                every 90 seconds. This data is processed and made available through our API and dashboard.
+                All node-related data is interpreted from provided sources. We do not generate
+                node data and cannot guarantee completeness or accuracy.
               </p>
               
               <h3>Data Retention</h3>
-              <div className="docs-definition-grid">
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Real-time Data</div>
-                  <div className="docs-definition-content">
-                    Available immediately and updated every 90 seconds. Retained for 7 days in cache.
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Historical Data</div>
-                  <div className="docs-definition-content">
-                    Daily aggregates and trends. Retained for 90 days for analytics purposes.
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">User Data</div>
-                  <div className="docs-definition-content">
-                    Account information and preferences. Retained while account is active.
-                  </div>
-                </div>
-              </div>
+              <ul className="docs-policy-list">
+                <li>Real-time node data: cached for 7 days</li>
+                <li>Historical aggregates: retained 90 days for analytics</li>
+                <li>User OAuth/account data: retained while account is active</li>
+              </ul>
               
               <h3>Data Security</h3>
               <p>
-                We implement industry-standard security measures to protect your data:
+                We implement reasonable security practices, including encrypted connections and
+                hashed passwords, to protect user data.
               </p>
-              <ul className="docs-policy-list">
-                <li>Encryption in transit (HTTPS/TLS)</li>
-                <li>Secure password storage (bcrypt hashing)</li>
-                <li>Regular security audits</li>
-                <li>Access controls and authentication</li>
-                <li>Monitoring for suspicious activity</li>
-              </ul>
             </div>
           </section>
 
+          {/* Keep Cookie, GDPR, Security sections mostly intact */}
           <section id="cookie-policy" className="docs-section">
             <div className="docs-section-header">
               <div className="docs-section-icon">{CookieSvg()}</div>
@@ -224,30 +168,18 @@ const Policies = () => {
                   <h4>Essential Cookies</h4>
                   <p>Required for basic site functionality and security</p>
                 </div>
-                
                 <div className="docs-category">
                   <h4>Performance Cookies</h4>
                   <p>Help us understand how visitors use our site</p>
                 </div>
-                
                 <div className="docs-category">
                   <h4>Functional Cookies</h4>
                   <p>Remember your preferences and settings</p>
                 </div>
-                
                 <div className="docs-category">
                   <h4>Analytics Cookies</h4>
                   <p>Collect anonymous usage data for improvement</p>
                 </div>
-              </div>
-              
-              <div className="docs-important-notice">
-                <h3>Cookie Consent</h3>
-                <p>
-                  By using our site, you consent to our use of cookies. You can control cookies
-                  through your browser settings, though disabling essential cookies may affect
-                  site functionality.
-                </p>
               </div>
             </div>
           </section>
@@ -259,60 +191,10 @@ const Policies = () => {
             </div>
             
             <div className="docs-policy-section">
-              <h3>Your Rights Under GDPR</h3>
               <p>
-                If you are located in the European Economic Area (EEA), you have certain rights
-                regarding your personal data:
+                We respect GDPR rights for users in the EU. To exercise data rights, contact our dev
+                team at <a href="https://cod-en-ywpx.vercel.app">cod-en-ywpx.vercel.app</a>.
               </p>
-              
-              <div className="docs-definition-grid">
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Access</div>
-                  <div className="docs-definition-content">
-                    Request copies of your personal data we hold
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Rectification</div>
-                  <div className="docs-definition-content">
-                    Request correction of inaccurate personal data
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Erasure</div>
-                  <div className="docs-definition-content">
-                    Request deletion of your personal data
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Restriction</div>
-                  <div className="docs-definition-content">
-                    Request restriction of processing your data
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Portability</div>
-                  <div className="docs-definition-content">
-                    Request transfer of your data to another organization
-                  </div>
-                </div>
-                
-                <div className="docs-definition">
-                  <div className="docs-definition-term">Right to Object</div>
-                  <div className="docs-definition-content">
-                    Object to processing of your personal data
-                  </div>
-                </div>
-              </div>
-              
-              <div className="docs-note">
-                <strong>Note:</strong> To exercise any of these rights, please contact us at 
-                privacy@Donnut-Nodes.com. We will respond to your request within 30 days.
-              </div>
             </div>
           </section>
 
@@ -323,40 +205,26 @@ const Policies = () => {
             </div>
             
             <div className="docs-policy-section">
-              <h3>Our Security Measures</h3>
+              <h3>Measures in Place</h3>
               <ul className="docs-policy-list">
-                <li>Regular security updates and patches</li>
-                <li>DDoS protection and rate limiting</li>
-                <li>Secure API authentication methods</li>
-                <li>Regular vulnerability scanning</li>
+                <li>Regular updates and security patches</li>
                 <li>Encrypted data storage and transmission</li>
                 <li>Access logging and monitoring</li>
                 <li>Incident response procedures</li>
               </ul>
               
-              <h3>Reporting Security Issues</h3>
+              <h3>Reporting Issues</h3>
               <p>
-                If you discover a security vulnerability in our platform, please report it to
-                security@Donnut-Nodes.com. We appreciate responsible disclosure and will work
-                promptly to address valid security concerns.
+                For security concerns, contact our dev team at <a href="https://cod-en-ywpx.vercel.app">cod-en-ywpx.vercel.app</a>.
               </p>
-              
-              <div className="docs-important-notice">
-                <h3>Disclaimer</h3>
-                <p>
-                  While we implement robust security measures, no online service can be 100% secure.
-                  We recommend users take appropriate precautions and use strong, unique passwords
-                  for their accounts.
-                </p>
-              </div>
             </div>
           </section>
 
           <div className="docs-cta">
-            <h3>Have Questions About Our Policies?</h3>
-            <p>Contact our legal team for clarification or to exercise your data rights</p>
-            <a href="mailto:legal@Donnut-Nodes.com" className="docs-cta-button">
-              Contact Legal Team
+            <h3>Need Help or Info?</h3>
+            <p>Contact our dev team for platform or data-related questions</p>
+            <a href="https://cod-en-ywpx.vercel.app" className="docs-cta-button">
+              Contact Dev Team
             </a>
           </div>
         </main>

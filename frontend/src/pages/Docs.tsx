@@ -1,115 +1,198 @@
 import './../docs.css';
 import { Link } from 'react-router-dom';
-import { Booksvg , Devsvg , ChartSvg , SupportSvg , Rocketsvg , TrackerSvg ,HistorySvg ,TeamSvg ,MissionSvg ,TimelineSvg } from '../components/svgPack';
+import {
+  Booksvg,
+  Devsvg,
+  ChartSvg,
+  SupportSvg,
+  Rocketsvg,
+  TrackerSvg,
+  HistorySvg,
+  MissionSvg,
+  Eyesvg,
+  SettingSvg,
+  Donnutsvg,
+} from '../components/svgPack';
 
 const Docs = () => {
   return (
     <div className="docs-container">
       <div className="docs-layout">
-        {/* Main Content */}
         <main className="docs-content docs-hub">
-          {/* Header Section */}
+
+          {/* Header */}
           <div className="docs-content-header">
             <h1>Donnut-Nodes Documentation</h1>
             <p className="docs-subtitle">
-              Comprehensive analytics platform for monitoring Xandeum pNodes. Track performance, analyze metrics, 
-              and optimize your storage operations with real-time insights.
+              An independent analytics platform for observing, analyzing, and understanding
+              Xandeum pNode behavior across the network.
             </p>
           </div>
 
-          {/* About Us Section */}
-          <section className="docs-section">
+          {/* Website Navigation Guide */}
+          <section className="docs-section navigation-guide">
             <div className="docs-section-header">
-              <div className="docs-section-icon">{HistorySvg()}</div>
-              <h2>Our Story</h2>
+              <div className="docs-section-icon">{Rocketsvg()}</div>
+              <h2>Website Navigation Guide</h2>
             </div>
-            
-            <div className="docs-about-grid">
-              <div className="docs-about-card">
-                <div className="docs-about-icon">{TimelineSvg()}</div>
-                <h3>How We Started</h3>
-                <p>
-                  Donnut-Nodes was founded to address the growing need for comprehensive analytics in decentralized storage networks.
-                  As Xandeum's pNode network expanded, we recognized the critical need for real-time monitoring and performance insights.
-                </p>
-                <p>
-                  We built our platform to provide the same level of visibility and analytics that blockchain validators enjoy,
-                  but specifically tailored for storage providers in the Xandeum ecosystem.
-                </p>
+
+            <p className="docs-navigation-intro">
+              Here's how to navigate through Donnut-Nodes platform effectively:
+            </p>
+
+            <div className="navigation-cards">
+              <div className="navigation-card">
+                <div className="navigation-icon">{Donnutsvg()}</div>
+                <div className="navigation-content">
+                  <h3>Home Page</h3>
+                  <p>Get an overview of network statistics, featured pNodes, and quick access to all platform features.</p>
+                  <Link to="/" className="navigation-link">Go to Home →</Link>
+                </div>
               </div>
 
-              <div className="docs-about-card">
-                <div className="docs-about-icon">{MissionSvg()}</div>
-                <h3>Our Mission</h3>
-                <p>
-                  To empower the Xandeum storage ecosystem with the most comprehensive, real-time analytics platform.
-                  We provide the tools needed for pNode operators to optimize performance and for developers to build better applications.
-                </p>
-                <ul className="docs-mission-list">
-                  <li>Deliver real-time pNode performance monitoring</li>
-                  <li>Provide actionable insights for storage optimization</li>
-                  <li>Build comprehensive network health analysis tools</li>
-                  <li>Support the growth of decentralized storage ecosystems</li>
-                </ul>
+              <div className="navigation-card">
+                <div className="navigation-icon">{TrackerSvg()}</div>
+                <div className="navigation-content">
+                  <h3>PNodes Viewer</h3>
+                  <p>Browse all available pNodes with advanced filtering options. View uptime, storage metrics, and status.</p>
+                  <Link to="/nodes" className="navigation-link">Explore Nodes →</Link>
+                </div>
               </div>
 
-              <div className="docs-about-card">
-                <div className="docs-about-icon">{TeamSvg()}</div>
-                <h3>The Team</h3>
-                <p>
-                  Built by a passionate team of blockchain developers and data analysts who believe in the power of
-                  decentralized storage. We combine expertise in distributed systems, real-time analytics, and
-                  user experience to make complex network data accessible and actionable.
-                </p>
-                <div className="docs-team-tags">
-                  <span className="docs-team-tag">Blockchain Experts</span>
-                  <span className="docs-team-tag">Data Analysts</span>
-                  <span className="docs-team-tag">Full-Stack Developers</span>
-                  <span className="docs-team-tag">UI/UX Designers</span>
+              <div className="navigation-card">
+                <div className="navigation-icon">{Eyesvg()}</div>
+                <div className="navigation-content">
+                  <h3>Watchlist</h3>
+                  <p>Track your favorite pNodes. Add nodes by clicking the plus icon (+) on any node card.</p>
+                  <Link to="/watchlist" className="navigation-link">View Watchlist →</Link>
+                </div>
+              </div>
+
+              <div className="navigation-card">
+                <div className="navigation-icon">{ChartSvg()}</div>
+                <div className="navigation-content">
+                  <h3>Compare Nodes</h3>
+                  <p>Compare two pNodes side-by-side. Select nodes using the search bars to view detailed comparisons.</p>
+                  <Link to="/compare" className="navigation-link">Start Comparing →</Link>
+                </div>
+              </div>
+
+              <div className="navigation-card">
+                <div className="navigation-icon">{SettingSvg()}</div>
+                <div className="navigation-content">
+                  <h3>Account Settings</h3>
+                  <p>Manage your account, update credentials, clear watchlist, or delete your account.</p>
+                  <Link to="/settings" className="navigation-link">Go to Settings →</Link>
+                </div>
+              </div>
+
+              <div className="navigation-card">
+                <div className="navigation-icon">{HistorySvg()}</div>
+                <div className="navigation-content">
+                  <h3>Authentication</h3>
+                  <p>Sign up with email, Google, or Twitter. Access your account from any device.</p>
+                  <div className="auth-links">
+                    <Link to="/signup" className="auth-link">Sign Up</Link>
+                    <span className="auth-separator">|</span>
+                    <Link to="/signin" className="auth-link">Sign In</Link>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div className="navigation-tips">
+              <h4>Quick Navigation Tips:</h4>
+              <ul>
+                <li>Use the <strong>navbar at the top</strong> to switch between main sections</li>
+                <li>On nodes pages, use <strong>filters</strong> to narrow down results by status, age, usage, etc.</li>
+                <li>Click on any <strong>node name</strong> to view detailed information</li>
+                <li>Use <strong>pagination controls</strong> at the bottom of nodes lists to navigate through pages</li>
+                <li>Add nodes to your watchlist by clicking the <strong>plus icon (+)</strong> on node cards</li>
+                <li>On comparison page, <strong>select two different nodes</strong> from the dropdowns to compare</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* What This Is */}
+          <section className="docs-section">
+            <div className="docs-section-header">
+              <div className="docs-section-icon">{HistorySvg()}</div>
+              <h2>What This Platform Is</h2>
+            </div>
+
+            <p>
+              Donnut-Nodes is an analytics and observability layer built to track Xandeum pNodes
+              as they appear on the network over time. It aggregates public network data and
+              transforms raw pNode sightings into meaningful performance and availability insights.
+            </p>
+
+            <p>
+              This project is built as part of a Xandeum pNode bounty and operates independently
+              from the core protocol. It does not control nodes, assign rewards, or influence
+              consensus — it observes and analyzes.
+            </p>
+          </section>
+
+          {/* How Data Works */}
+          <section className="docs-section">
+            <div className="docs-section-header">
+              <div className="docs-section-icon">{MissionSvg()}</div>
+              <h2>How pNode Data Is Interpreted</h2>
+            </div>
+
+            <ul className="docs-mission-list">
+              <li>
+                <strong>Node Identity:</strong> Each pNode is identified by a cryptographic public key.
+                Network addresses (IP / port) may change without affecting node identity.
+              </li>
+              <li>
+                <strong>Instances vs Nodes:</strong> A single pNode may appear multiple times across
+                the network due to restarts, NAT changes, or port rebinding.
+              </li>
+              <li>
+                <strong>Uptime:</strong> Uptime reflects observed availability over time, not continuous
+                process runtime. Temporary restarts do not reset long-term reliability.
+              </li>
+              <li>
+                <strong>Sampling:</strong> Network data is collected periodically and normalized
+                to reduce noise caused by transient network conditions.
+              </li>
+            </ul>
           </section>
 
           {/* Platform Overview */}
           <section className="docs-section">
             <div className="docs-section-header">
               <div className="docs-section-icon">{Booksvg()}</div>
-              <h2>Platform Overview</h2>
+              <h2>Platform Capabilities</h2>
             </div>
-            
+
             <div className="docs-platform-stats">
               <div className="docs-platform-stat">
-                <div className="docs-platform-stat-value">Real-Time</div>
-                <div className="docs-platform-stat-label">Monitoring</div>
+                <div className="docs-platform-stat-value">Observed</div>
+                <div className="docs-platform-stat-label">Network Data</div>
               </div>
               <div className="docs-platform-stat">
-                <div className="docs-platform-stat-value">Comprehensive</div>
-                <div className="docs-platform-stat-label">Analytics</div>
+                <div className="docs-platform-stat-value">Normalized</div>
+                <div className="docs-platform-stat-label">Node Identity</div>
               </div>
               <div className="docs-platform-stat">
-                <div className="docs-platform-stat-value">Actionable</div>
-                <div className="docs-platform-stat-label">Insights</div>
+                <div className="docs-platform-stat-value">Historical</div>
+                <div className="docs-platform-stat-label">Performance</div>
               </div>
               <div className="docs-platform-stat">
-                <div className="docs-platform-stat-value">Open</div>
-                <div className="docs-platform-stat-label">Documentation</div>
+                <div className="docs-platform-stat-value">Transparent</div>
+                <div className="docs-platform-stat-label">Methodology</div>
               </div>
             </div>
-
-            <p className="docs-platform-description">
-              Donnut-Nodes provides a complete suite of tools for monitoring Xandeum pNodes. From real-time
-              performance metrics to historical trend analysis, we've built everything you need to understand
-              and optimize your interaction with the Xandeum network.
-            </p>
           </section>
 
-          {/* Documentation Sections Grid */}
+          {/* Docs Grid */}
           <section className="docs-section">
             <div className="docs-section-header">
-              <h2>Explore Our Documentation</h2>
+              <h2>Documentation Sections</h2>
               <p className="docs-section-description">
-                Dive deeper into specific aspects of our platform with these comprehensive guides
+                Detailed explanations of metrics, data sources, and tools
               </p>
             </div>
 
@@ -118,43 +201,23 @@ const Docs = () => {
                 <div className="docs-card">
                   <div className="docs-card-icon">{Devsvg()}</div>
                   <h3>API Reference</h3>
-                  <p>Complete API documentation, endpoints, authentication, and integration guides for developers.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">Explore API →</span>
-                  </div>
+                  <p>Endpoints, response formats, and integration details.</p>
                 </div>
               </Link>
 
               <Link to="/docs/nodes" className="docs-card-link">
                 <div className="docs-card">
                   <div className="docs-card-icon">{TrackerSvg()}</div>
-                  <h3>pNodes Guide</h3>
-                  <p>Understanding pNode metrics, efficiency scoring, storage calculations, and uptime tracking.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">Learn about pNodes →</span>
-                  </div>
+                  <h3>pNodes Explained</h3>
+                  <p>Identity, uptime, storage metrics, and availability scoring.</p>
                 </div>
               </Link>
 
               <Link to="/docs/graphs" className="docs-card-link">
                 <div className="docs-card">
                   <div className="docs-card-icon">{ChartSvg()}</div>
-                  <h3>Graphs & Analytics</h3>
-                  <p>Visual data analysis, performance graphs, storage trends, and network health metrics.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">View Analytics →</span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to="/docs/methods" className="docs-card-link">
-                <div className="docs-card">
-                  <div className="docs-card-icon">{Rocketsvg()}</div>
-                  <h3>Methods & Tools</h3>
-                  <p>Watchlist feature, node comparison tool, advanced filtering, and analysis methods.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">Explore Tools →</span>
-                  </div>
+                  <h3>Analytics & Graphs</h3>
+                  <p>How to read charts and interpret trends correctly.</p>
                 </div>
               </Link>
 
@@ -162,85 +225,28 @@ const Docs = () => {
                 <div className="docs-card">
                   <div className="docs-card-icon">{SupportSvg('big')}</div>
                   <h3>Terminology</h3>
-                  <p>Glossary of terms, technical definitions, and metrics explanations for clear understanding.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">Learn Terms →</span>
-                  </div>
+                  <p>Clear definitions of network and storage concepts.</p>
                 </div>
               </Link>
-
-              <Link to="/docs/developers" className="docs-card-link">
+              
+              <Link to="/docs/terms" className="docs-card-link">
                 <div className="docs-card">
-                  <div className="docs-card-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" strokeWidth="2"/>
-                    </svg>
-                  </div>
-                  <h3>Integration Guide</h3>
-                  <p>How to integrate our analytics into your applications, webhooks, and custom solutions.</p>
-                  <div className="docs-card-footer">
-                    <span className="docs-card-cta">Integrate Now →</span>
-                  </div>
+                  <div className="docs-card-icon">{SupportSvg('big')}</div>
+                  <h3>Terms and Policies</h3>
+                  <p>Our binding systems for use of data and information and other activities.</p>
+                </div>
+              </Link>
+              
+              <Link to="/docs/methods" className="docs-card-link">
+                <div className="docs-card">
+                  <div className="docs-card-icon">{Rocketsvg('big')}</div>
+                  <h3>Methods</h3>
+                  <p>Clear definitions of our call and render methods.</p>
                 </div>
               </Link>
             </div>
           </section>
 
-          {/* Quick Start Section */}
-          <section className="docs-section docs-quick-start">
-            <div className="docs-quick-start-header">
-              <h2>Quick Start Guide</h2>
-              <p>Get up and running in minutes</p>
-            </div>
-            
-            <div className="docs-quick-steps">
-              <div className="docs-quick-step">
-                <div className="docs-quick-step-number">1</div>
-                <div className="docs-quick-step-content">
-                  <h3>Explore the Dashboard</h3>
-                  <p>Start with our homepage to see network overview and top-performing pNodes.</p>
-                </div>
-              </div>
-              
-              <div className="docs-quick-step">
-                <div className="docs-quick-step-number">2</div>
-                <div className="docs-quick-step-content">
-                  <h3>Monitor Specific Nodes</h3>
-                  <p>Use the Nodes page to filter, search, and analyze individual pNode performance.</p>
-                </div>
-              </div>
-              
-              <div className="docs-quick-step">
-                <div className="docs-quick-step-number">3</div>
-                <div className="docs-quick-step-content">
-                  <h3>Set Up Watchlists</h3>
-                  <p>Create an account to save important nodes and track their performance over time.</p>
-                </div>
-              </div>
-              
-              <div className="docs-quick-step">
-                <div className="docs-quick-step-number">4</div>
-                <div className="docs-quick-step-content">
-                  <h3>Use Advanced Tools</h3>
-                  <p>Try our comparison tools and analytics features for deeper insights.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="docs-quick-start-cta">
-              <Link to="/nodes" className="docs-primary-btn">
-                Start Exploring Nodes
-              </Link>
-              <a 
-                href="https://discord.gg/uqRSmmM5m" 
-                className="docs-secondary-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Join Xandeum
-              </a>
-            </div>
-          </section>
         </main>
       </div>
     </div>

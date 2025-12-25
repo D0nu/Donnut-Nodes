@@ -912,140 +912,6 @@ export const PageFilters = ({ pub, use, eff, rev, age, time, filter, status, set
     )
 }
 
-function useChartZoom({ minZoom = 1 , maxZoom = 10 , zoomStep = 0.2 } = {}) {
-  const [zoom, setZoom] = useState(1);
-  const [offset, setOffset] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Wheel zoom (scoped)
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-
-      setZoom((z) =>
-        Math.min( Math.max(z + (e.deltaY > 0 ? -zoomStep : zoomStep), minZoom), maxZoom )
-      );
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [ minZoom , maxZoom , zoomStep ]);
-
-  // Mobile pinch zoom
-  const lastDistance = useRef<number | null>(null);
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length !== 2) return;
-    e.preventDefault();
-
-    const dx = e.touches[0].clientX - e.touches[1].clientX;
-    const dy = e.touches[0].clientX - e.touches[1].clientX;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (lastDistance.current) {
-      const scale = distance / lastDistance.current;
-      setZoom((z) =>
-        Math.min(Math.max(z * scale, minZoom), maxZoom)
-      );
-    }
-
-    lastDistance.current = distance;
-  };
-
-  const onTouchEnd = () => {
-    lastDistance.current = null;
-  };
-
-  return {
-    containerRef,
-    zoom,
-    offset,
-    setOffset,
-    resetZoom: () => {
-      setZoom(1);
-      setOffset(0);
-    },
-    touchHandlers: {
-      onTouchMove,
-      onTouchEnd,
-    },
-  };
-}
-
-// export function ChartComponent ({ data , isMobile , unit , name }: { data: Data[] , isMobile: boolean , name: string , unit: string }) {
-//   const { containerRef , zoom , offset , setOffset , resetZoom , touchHandlers } = useChartZoom()
-
-//   const visibleCount = Math.floor(data.length / zoom);
-//   const visibleData = data.slice(offset, offset + visibleCount);
-  
-//   const getYDomain = (data: { value: number }[]): [number, number] => {
-//     if (!data.length) return [0, 1];
-
-//     const values = data.map(d => d.value);
-//     const min = Math.min(...values);
-//     const max = Math.max(...values);
-
-//     if (min === max) {
-//       const buffer = Math.abs(min) > 1 ? Math.abs(min) * 0.1 : 1;
-
-//       return [min - buffer, max + buffer];
-//     }
-
-//     const range = max - min;
-
-//     const magnitude = Math.pow(10, Math.floor(Math.log10(range)));
-//     const padding = Math.max(range * 0.1, magnitude * 0.1);
-
-//     return [ min - padding ,  max + padding ];
-//   };
-
-
-//   return (
-//     <div className='chart'
-//       ref = {containerRef}
-//       {... touchHandlers }
-//       style={{ width: "100%", touchAction: 'none', height: 400 , overflow: "hidden" }}>
-//       <ResponsiveContainer width='100%' height='100%'>
-//         <LineChart
-//           margin={{ top: 7, right: 7, left: 15, bottom: 7 }}
-//           data={visibleData}>
-//           <Tooltip />
-//           <CartesianGrid strokeDasharray="3 3" />
-//           <YAxis
-//             width={60}
-//             strokeWidth={2}
-//             domain={getYDomain(data)}
-//             tick={{ fontSize: 12 , fontWeight: 600 }}
-//             tickFormatter={(value: number) => `${Math.round(value)}${unit}`}
-//           />
-//           <XAxis
-//             dataKey="time"
-//             strokeWidth={2}
-//             tickFormatter={(value) =>
-//               new Date(value).toLocaleDateString("en-US", {
-//                 day: "numeric",
-//                 month: isMobile ? "short" : "long",
-//                 year: !isMobile ? "numeric" : undefined,
-//               })
-//             }
-//             minTickGap={30}
-//             tick={{ fontSize: 12 , fontWeight: 600 }}
-//           />
-//           <Line
-//             name={name}
-//             type="monotone"
-//             dataKey="value"
-//             strokeWidth={1.5}
-//             stroke="var(--highlight)" dot={false} />
-//         </LineChart>
-//       </ResponsiveContainer>
-//     </div>
-//   )
-// }
-
 export function ChartComponent ({ data , isMobile , unit , name }: { data: Data[] , isMobile: boolean , name: string , unit: string }) {
   const offsetRef = useRef(0)
   const [ zoom , setZoom ] = useState(1)
@@ -1189,7 +1055,7 @@ export function ChartComponent ({ data , isMobile , unit , name }: { data: Data[
           <button>{Exportsvg()}</button>
         </section>
         <div className='chart-zoom'>
-          <menu className='zoom-scroll' onMouseDown={zoomStart} onMouseMove={zoomOn} onMouseUp={zoomEnd} onMouseLeave={zoomEnd}>
+          <menu className='zoom-scroll' onMouseDown={zoomStart} onMouseMove={zoomOn} onMouseUp={zoomEnd}>
             <span style={{ left: `${ 85 / 20 * zoom }px` }}>{zoom.toFixed(2)}</span>
           </menu>
           <menu className="zoom-controls">
@@ -1432,10 +1298,7 @@ export function DoubleChartComponent ({ name , data , isMobile  ,unit , names , 
             data={visibleData}>
             <Tooltip 
               animationDuration={300}
-              formatter={(value, name) => [
-                `${value}${unit}`,
-                name === 'primaryValue' ? names[0] : names[1]
-              ]}
+              formatter={(value?: number | string , name?: string) => [`${value}${unit}`, name ?? ""] }
               labelFormatter={(label) => new Date(label).toLocaleString()}
             />
             <CartesianGrid strokeDasharray="3 3" />

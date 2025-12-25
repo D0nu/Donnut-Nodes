@@ -183,6 +183,7 @@ const Compare = () => {
   }
 
   const Histories = () => {
+    const errors = compareError || contextError
     const loading = isCompareLoading || isContextLoading
     const noNodes = compareHistories.length < 1 || contextHistories.length < 1
 
@@ -198,7 +199,7 @@ const Compare = () => {
     }
 
     const Errors = () => {
-      if ( !noNodes ) return <></>
+      if ( !noNodes || loading ) return <></>
       return compareError && contextError ? (
         <div className="bg-set">
           <h2> Failed to get either node history </h2>
@@ -224,7 +225,7 @@ const Compare = () => {
     }
 
     const Stales = () => {
-      if ( !noNodes || loading) return <></>
+      if ( !noNodes || loading || errors ) return <></>
       return !compare && !context ? (
         <></>
       ) : ( compare && !compareHistories.length ) && ( context && !contextHistories.length ) ? (
@@ -280,6 +281,7 @@ const Compare = () => {
   useEffect(()=>{
     ( async() => {
       if (!compare || isCompareLoading ) return
+      setCompareError( '' )
       setIsCompareLoading(true)
       try {
         const res = await fetch(`${process.env.REACT_APP_API || 'http://localhost:4000'}/pnodes/${compare.pubkey}`)
@@ -304,6 +306,7 @@ const Compare = () => {
   useEffect(()=>{
     ( async() => {
       if (!context || isContextLoading ) return
+      setContextError( '' )
       setIsContextLoading(true)
       try {
         const res = await fetch(`${process.env.REACT_APP_API || 'http://localhost:4000'}/pnodes/${context.pubkey}`)
@@ -345,9 +348,9 @@ const Compare = () => {
         {compareHistories.length && contextHistories.length ? (
           <div className="histories">
             <DoubleChartComponent name='uptime' data={contexts.uptimeData} secondData={compares.uptimeData} isMobile={isMobile} unit='s' names={[context?.name || 'uptime' , compare?.name || 'uptime']} />
-            <DoubleChartComponent name='storage used' data={contexts.storageData} secondData={compares.uptimeData} isMobile={isMobile} unit='MB' names={[context?.name || 'storage used' , compare?.name || 'storage used']} />
-            <DoubleChartComponent name='storage committed' data={contexts.committedData} secondData={compares?.uptimeData || 'uptime'} isMobile={isMobile} unit='GB' names={[context?.name || 'storage committed' , compare?.name || 'storage committed']} />
-            <DoubleChartComponent name='storage used percent' data={contexts.percentData} secondData={compares.uptimeData} isMobile={isMobile} unit='%' names={[context?.name || 'storage used percent' , compare?.name || 'storage used percent']} />
+            <DoubleChartComponent name='storage used' data={contexts.storageData} secondData={compares.storageData} isMobile={isMobile} unit='MB' names={[context?.name || 'storage used' , compare?.name || 'storage used']} />
+            <DoubleChartComponent name='storage committed' data={contexts.committedData} secondData={compares?.committedData || 'uptime'} isMobile={isMobile} unit='GB' names={[context?.name || 'storage committed' , compare?.name || 'storage committed']} />
+            <DoubleChartComponent name='storage used percent' data={contexts.percentData} secondData={compares.percentData} isMobile={isMobile} unit='%' names={[context?.name || 'storage used percent' , compare?.name || 'storage used percent']} />
           </div>
         ) : contextHistories.length ? (
           <div className="histories">

@@ -35,6 +35,7 @@ export type PNodes = {
   uptime: number; // seconds
   last_seen_timestamp: number; // unix seconds
 
+  age: number;
   first_seen: number;
   storage_used: number; // bytes
   storage_committed: number; // bytes

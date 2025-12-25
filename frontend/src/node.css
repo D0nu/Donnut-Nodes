@@ -46,7 +46,7 @@
 .histories{
   gap: 50px;
   display: flex;
-  padding-bottom: 30px;
+  padding-block: 40px;
   flex-direction: column;
 }
 

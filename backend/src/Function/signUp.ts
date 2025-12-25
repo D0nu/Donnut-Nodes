@@ -86,7 +86,7 @@ export async function Settings ( req: Request , res: Response) {
     const user = await verifyJWT( req )
     const prov = user.provider
 
-    const isCorrect = await bcrypt.compare( password , user.password )
+    const isCorrect = await bcrypt.compare( pass , user.password )
 
     if ( !isCorrect ) return res.status(401).json({ error: "Incorrect password." });
 
